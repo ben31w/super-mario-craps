@@ -1,7 +1,6 @@
 # super-mario-craps
-This project is a Super Mario-themed craps game.
+This project is a Super Mario-themed craps game created with Java JComponents. The game is displayed in a JFrame with clickable JPanels, JButtons, etc.
 
-I coded it using Java JComponents; the game is displayed in a JFrame with clickable JPanels, JButtons, etc.
 The game is run through the file "CrapsDriver.java", and the other files are JPanels that specify the game's layout 
 and functionality. There's a Dice class that simulates the rolling of a pair of dice. There's also a class for the
 title screen, character select screen, and the game screen that the user interacts with.
