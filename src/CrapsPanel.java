@@ -24,19 +24,19 @@ import javax.swing.JTextField;
  * @version 2021.01.05
  */
 public class CrapsPanel extends JPanel {
-    /** the first pair of dice used during the initial roll */
+    /** the pair of dice used during the initial roll */
     private Dice dice1;
     
-    /** the second pair of dice used during all other rolls */
+    /** the pair of dice used during all rolls after initial roll */
     private Dice dice2;
     
     /** bet $5 */
     private JButton bet25Button;
     
-    /** bet $20 */
+    /** bet $100 */
     private JButton bet100Button;
     
-    /** bet $100 */
+    /** bet $500 */
     private JButton bet500Button;
     
     /** resets the player's wager to 0 */
@@ -72,10 +72,10 @@ public class CrapsPanel extends JPanel {
     /** displays the game's high score */
     private JLabel highScoreLabel;
     
-    /** displays the character mugshot */
+    /** displays the mugshot of the selected character */
     private JLabel mugshotLabel;
     
-    /** displays the player's goal*/
+    /** displays the player's goal (what they need to roll to get money; e.g., 4,5,6,8,9,10) */
     private JLabel goalLabel;
     
     /** displays the player's win-loss record */
@@ -90,13 +90,13 @@ public class CrapsPanel extends JPanel {
     /** the player's wager */
     private int wager = 0;
     
-    /** the number the player needs to roll */
+    /** the number the player needs to roll to win money */
     private int goal;
     
-    /** the number rounds won */
+    /** the player's wins */
     private int wins = 0;
     
-    /** the number of rounds lost */
+    /** the player's losses */
     private int losses = 0;
     
     /** the player's win streak */
@@ -105,7 +105,7 @@ public class CrapsPanel extends JPanel {
     /** the game's high score */
     private int highScore;
     
-    /** the character the player has chosen */
+    /** the character the player has chosen (mario, luigi, peach, dk, wario, yoshi) */
     private String chosen = "mario";
     
     /** used to set the layout of the panel */
@@ -113,7 +113,8 @@ public class CrapsPanel extends JPanel {
 
     
     /**
-     * Construct the panel.
+     * Construct the panel. Define the panel's layout and initialize variables 
+     * needed throughout the rest of the program.
      */
     public CrapsPanel() {
         // Get the player's character and the high score.
@@ -124,7 +125,9 @@ public class CrapsPanel extends JPanel {
         setLayout(new GridBagLayout());
         gbc.insets = new Insets(5, 5, 5, 5);
 
-        // first row (gbc.gridy = 0 & 1)
+        // first row (gbc.gridy = 0 or 1)
+        // Displays the player's money and wager. Also contains buttons for 
+        // betting $25, $100, $500, and a text field for betting custom amounts.
         moneyLabel = new JLabel(String.format("$%,d", money));
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -176,7 +179,9 @@ public class CrapsPanel extends JPanel {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         add(textfield, gbc);
 
-        // second row (gbc.gridy = 2);
+        // second row (gbc.gridy = 2)
+        // Contains buttons for clearing the wager, betting half the money, and 
+        // betting all the money. Also displays the user's win streak and high score.
         clearWagerButton = new JButton("Clear Wager");
         clearWagerButton.addActionListener(new ClearWagerListener());
         gbc.gridx = 0;
@@ -220,7 +225,9 @@ public class CrapsPanel extends JPanel {
         gbc.fill = GridBagConstraints.NONE;
         add(highScoreLabel, gbc);
         
-        //third row  gbc.gridy = 3;
+        // third row  (gbc.gridy = 3)
+        // Contains the initial roll button, the dice for the initial roll, the 
+        // mugshot of the player's character, and the player's goal (if applicable).
         initialRollButton = new JButton("Initial Roll");
         initialRollButton.addActionListener(new DiceListener());
         initialRollButton.setEnabled(false);
@@ -257,7 +264,9 @@ public class CrapsPanel extends JPanel {
         gbc.fill = GridBagConstraints.NONE;
         add(goalLabel, gbc);
 
-        //fourth row gbc.gridy = 5;
+        // fourth row (gbc.gridy = 5)
+        // Contains the roll again button and dice, the player's W-L record, 
+        // and the quit button.
         rollAgainButton = new JButton("Roll Again");
         rollAgainButton.addActionListener(new DiceListener());
         rollAgainButton.setEnabled(false);
@@ -297,7 +306,10 @@ public class CrapsPanel extends JPanel {
     
 
     /**
-     * Listener for all buttons that bet money.
+     * Listener for all buttons that bet money. These buttons add to the 
+     * player's wager while subtracting the same amount from their money. They 
+     * fail if the user doesn't have enough money for the value indicated on 
+     * the button.
      * 
      * @author ben31w
      */
@@ -328,7 +340,6 @@ public class CrapsPanel extends JPanel {
                 value = money;
             }
 
-
             // Check if the player has enough money to wager.
             if (money >= value) {
                 money -= value;
@@ -357,7 +368,9 @@ public class CrapsPanel extends JPanel {
     
 
     /**
-     * Listener for the text field.
+     * Listener for the text field. The text field takes a custom bet that the 
+     * user enters. But it fails if the user tries to bet more money than they 
+     * have.
      * 
      * @author ben31w
      */
@@ -365,8 +378,11 @@ public class CrapsPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             try {
                 int value = Integer.parseInt(textfield.getText());
-                // Prevent the player from wagering $0 or negative numbers.
+                // The player can only wager positive numbers.
                 if (value > 0) {
+                    // Check if the amount the player is trying to wager is less 
+                    // than or equal to the money. The player can't wager more 
+                    // money then they have.
                     if(money >= value) {
                         money -= value;
                         wager += value;
@@ -403,7 +419,8 @@ public class CrapsPanel extends JPanel {
     
     
     /**
-     * Listener for the clear wager button.
+     * Listener for the clear wager button. This button resets the wager to 0, 
+     * and adds the wager back to the player's money.
      * 
      * @author ben31w
      */
@@ -422,7 +439,8 @@ public class CrapsPanel extends JPanel {
     
     
     /**
-     * Listener for the dice roll buttons.
+     * Listener for the dice roll buttons. These buttons simulate a dice roll 
+     * (create a number between 2-12) and update the images of the dice on the panel.
      * 
      * @author ben31w
      */
@@ -459,7 +477,7 @@ public class CrapsPanel extends JPanel {
     
 
     /**
-     * Listener for the quit button.
+     * Listener for the quit button. This button exits the game.
      * 
      * @author ben31w
      */
@@ -471,7 +489,8 @@ public class CrapsPanel extends JPanel {
     
     
     /**
-     * Given a text file, read the file and get the first string.
+     * Return the character that the player has chosen (i.e., the first string 
+     * in the given text file).
      * 
      * @param filePath
      *              a text file to be read
@@ -492,7 +511,7 @@ public class CrapsPanel extends JPanel {
     
     
     /**
-     * Given a text file, read the file and return the first integer.
+     * Return the high score (i.e., the first integer in the given text file).
      * 
      * @param filePath
      *          a text file to be read
@@ -542,8 +561,8 @@ public class CrapsPanel extends JPanel {
 
     
     /**
-     * Award the user double their wager, and reset the buttons for the next 
-     * round.
+     * Called when the player wins a round. Award the player double their 
+     * wager, and reset the buttons for the next round.
      */
     private void win() {
         goalLabel.setFont(new Font("calibri", Font.BOLD, 15));
@@ -571,8 +590,8 @@ public class CrapsPanel extends JPanel {
     
     
     /**
-     * Set the wager to 0 and prepare for the next round (if the user still has
-     * money).
+     * Called when the player loses a round. Set the wager to 0 and prepare for 
+     * the next round (if the user still has money).
      */
     private void loss() {
         goalLabel.setFont(new Font("calibri", Font.BOLD, 15));
@@ -604,7 +623,6 @@ public class CrapsPanel extends JPanel {
      * Disable all buttons and text fields.
      */
     private void disableButtons() {
-
         bet25Button.setEnabled(false);
         bet100Button.setEnabled(false);
         bet500Button.setEnabled(false);
