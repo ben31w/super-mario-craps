@@ -17,26 +17,25 @@ For your initial roll:
 
 To play this game, run the file "CrapsDriver.java"
 It should bring up this frame:
-![Screenshot from 2021-10-11 21-59-24](https://user-images.githubusercontent.com/78334282/136879716-b6ae2b1d-238b-46a9-9d6a-a2b03e58f9ee.png)
+![smc-title-screen](https://user-images.githubusercontent.com/78334282/136995440-773e7c44-b7aa-48aa-9f78-e49cf9969e6a.png)
 
 If you click anywhere inside this frame, it will bring up a character select screen:
-![Screenshot from 2021-10-11 21-59-35](https://user-images.githubusercontent.com/78334282/136880020-a4213422-5efe-4289-8d99-1be515e8ba0d.png)
+![smc-character-select-screen](https://user-images.githubusercontent.com/78334282/136995450-c680513d-1203-4ff6-9cdd-70b881ed279e.png)
 
-Once you pick a character, you are ready to begin playing! It will bring up this screen:
-![Screenshot from 2021-10-11 21-59-50](https://user-images.githubusercontent.com/78334282/136880026-563429fc-9686-494f-b1d6-c486cc815d95.png)
-)
+Once you pick a character, you are ready to begin playing! It will bring up the game screen:
+![smc-1](https://user-images.githubusercontent.com/78334282/136995553-d5d45f04-3be3-460f-977e-2be98bce9a32.png)
 
-The first step in craps is to bet money. Once you have done this, you are ready to roll some dice:
-![Screenshot from 2021-10-11 22-00-00](https://user-images.githubusercontent.com/78334282/136880031-bbaafd97-a343-408b-aaad-eb7a7dd408ce.png)
+The first step in craps is to bet money. You can use any of the top buttons or text field to do this. Once you have bet money, the initial roll button will become enabled:
+![smc-2](https://user-images.githubusercontent.com/78334282/136995578-89234ca1-49da-4fd4-934b-0b7e1e3ec72f.png)
 
 In this case, we rolled a three on the first roll. This causes us to lose our wager:
-![Screenshot from 2021-10-11 22-00-13](https://user-images.githubusercontent.com/78334282/136880035-3c50d0ae-1624-43ff-8cf0-2f3de5b6876e.png)
+![smc-3](https://user-images.githubusercontent.com/78334282/136995589-f4ee8852-7fe2-4fa1-999c-0b39c06a2a41.png)
 
-We bet more money and make another initial roll. We rolled a six, which becomes our goal.
-![Screenshot from 2021-10-11 22-00-20](https://user-images.githubusercontent.com/78334282/136880039-2edb1629-2c5f-4239-88c6-4f605cc9a263.png)
+We bet more money and make another initial roll. We rolled a six, which becomes our goal. Once we have a goal, the roll again button becomes enabled:
+![smc-4](https://user-images.githubusercontent.com/78334282/136995597-89e7e12a-8969-40b1-808a-b83df75eb10e.png)
 
 If we roll a six again, we win double our wager!
-![Screenshot from 2021-10-11 22-00-32](https://user-images.githubusercontent.com/78334282/136880048-7475ec21-8a78-4d39-b496-78503557da37.png)
+![smc-5](https://user-images.githubusercontent.com/78334282/136995610-b3934bca-d5a9-4bbb-8af7-091769f78417.png)
 
 The goal of the game is keep winning and making money.
 
