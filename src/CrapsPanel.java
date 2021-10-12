@@ -21,7 +21,7 @@ import javax.swing.JTextField;
  * JPanel containing the craps "game field".
  *  
  * @author ben31w
- * @version 2021.01.05
+ * @version 2021.10.12
  */
 public class CrapsPanel extends JPanel {
     /** the pair of dice used during the initial roll */
@@ -110,6 +110,11 @@ public class CrapsPanel extends JPanel {
     
     /** used to set the layout of the panel */
     private GridBagConstraints gbc = new GridBagConstraints();
+    
+    // CONSTANTS
+    private static final String IMAGES_FILE_PATH = "images" + File.separator;
+    private static final String MONEY_FORMAT_STRING = "$%,d";
+    private static final String WAGER_FORMAT_STRING = "Wager: $%,d";
 
     
     /**
@@ -128,12 +133,12 @@ public class CrapsPanel extends JPanel {
         // first row (gbc.gridy = 0 or 1)
         // Displays the player's money and wager. Also contains buttons for 
         // betting $25, $100, $500, and a text field for betting custom amounts.
-        moneyLabel = new JLabel(String.format("$%,d", money));
+        moneyLabel = new JLabel(String.format(MONEY_FORMAT_STRING, money));
         gbc.gridx = 0;
         gbc.gridy = 0;
         add(moneyLabel, gbc);
 
-        wagerLabel = new JLabel(String.format("Wager: $%,d", wager));
+        wagerLabel = new JLabel(String.format(WAGER_FORMAT_STRING, wager));
         gbc.gridx = 0;
         gbc.gridy = 1;
         add(wagerLabel, gbc);
@@ -247,8 +252,7 @@ public class CrapsPanel extends JPanel {
         add(dice1, gbc);
 
         mugshotLabel = new JLabel();
-        mugshotLabel.setIcon(new ImageIcon("images" + File.separator + chosen + 
-                File.separator + "neutral.png"));
+        mugshotLabel.setIcon( new ImageIcon(IMAGES_FILE_PATH + chosen + File.separator + "neutral.png") );
         gbc.gridx = 3;
         gbc.gridy = 3;
         gbc.gridheight = 2;
@@ -359,10 +363,9 @@ public class CrapsPanel extends JPanel {
             }
 
             // Set labels.
-            moneyLabel.setText(String.format("$%,d", money));
-            wagerLabel.setText(String.format("Wager: $%,d", wager));
-            mugshotLabel.setIcon(new ImageIcon("images" + File.separator + 
-                    chosen + File.separator + "neutral.png"));
+            moneyLabel.setText( String.format(MONEY_FORMAT_STRING, money) );
+            wagerLabel.setText( String.format(WAGER_FORMAT_STRING, wager) );
+            mugshotLabel.setIcon( new ImageIcon(IMAGES_FILE_PATH  + chosen + File.separator + "neutral.png") );
         }
     }
     
@@ -404,11 +407,10 @@ public class CrapsPanel extends JPanel {
                     }
                     
                     // Set labels and reset text field.
-                    moneyLabel.setText(String.format("$%,d", money));
-                    wagerLabel.setText(String.format("Wager: $%,d", wager));
+                    moneyLabel.setText( String.format(MONEY_FORMAT_STRING, money) );
+                    wagerLabel.setText( String.format(WAGER_FORMAT_STRING, wager) );
                     textfield.setText("");
-                    mugshotLabel.setIcon(new ImageIcon("images" + File.separator + 
-                            chosen + File.separator + "neutral.png"));
+                    mugshotLabel.setIcon( new ImageIcon(IMAGES_FILE_PATH + chosen + File.separator + "neutral.png"));
                 }
             }
             catch (NumberFormatException f) {
@@ -430,8 +432,8 @@ public class CrapsPanel extends JPanel {
             wager = 0;
             
             moneyLabel.setForeground(Color.black);
-            moneyLabel.setText(String.format("$%,d", money));
-            wagerLabel.setText(String.format("Wager: $%,d", wager));
+            moneyLabel.setText( String.format(MONEY_FORMAT_STRING, money) );
+            wagerLabel.setText( String.format(WAGER_FORMAT_STRING, wager) );
             
             initialRollButton.setEnabled(false);
         }
@@ -567,16 +569,15 @@ public class CrapsPanel extends JPanel {
     private void win() {
         goalLabel.setFont(new Font("calibri", Font.BOLD, 15));
         goalLabel.setText("You won $" + wager*2 + "!");
-        mugshotLabel.setIcon(new ImageIcon("images" + File.separator + chosen + 
-                File.separator + "happy.png"));
+        mugshotLabel.setIcon( new ImageIcon(IMAGES_FILE_PATH + chosen + File.separator + "happy.png") );
 
         money += wager*2;
         wager = 0;
         wins += 1;
         streak += 1;
 
-        moneyLabel.setText(String.format("$%,d", money));
-        wagerLabel.setText(String.format("Wager: $%,d", wager));
+        moneyLabel.setText( String.format(MONEY_FORMAT_STRING, money) );
+        wagerLabel.setText( String.format(WAGER_FORMAT_STRING, wager) );
         winLossLabel.setText(wins + "-" + losses);
         streakLabel.setText("Streak: " + streak); 
 
@@ -601,19 +602,17 @@ public class CrapsPanel extends JPanel {
         losses = losses + 1;
         streak = 0;
 
-        wagerLabel.setText(String.format("Wager: $%,d", wager));
+        wagerLabel.setText(String.format(WAGER_FORMAT_STRING, wager));
         winLossLabel.setText(wins + "-" + losses);
         streakLabel.setText("Streak: " + streak);
 
         if(money > 0) {
-            mugshotLabel.setIcon(new ImageIcon("images" + File.separator + 
-                    chosen + File.separator + "sad.png"));
+            mugshotLabel.setIcon( new ImageIcon(IMAGES_FILE_PATH + chosen + File.separator + "sad.png") );
             resetButtons();
         }
         else {
             goalLabel.setText("GAME OVER");
-            mugshotLabel.setIcon(new ImageIcon("images" + File.separator + 
-                    chosen + File.separator + "depressed.png"));
+            mugshotLabel.setIcon( new ImageIcon(IMAGES_FILE_PATH + chosen + File.separator + "depressed.png") );
             disableButtons();
         }
     }
