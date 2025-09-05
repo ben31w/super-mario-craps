@@ -207,6 +207,11 @@ gradle-app.setting
 # VS Code
 .vscode/
 
+# Eclipse
+.project
+.classpath
+
 # Project-specific ignores
 chosen.txt
 highScore.txt
+archive/*
