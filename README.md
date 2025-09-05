@@ -1,8 +1,14 @@
 # Super Mario Craps
-Craps is a dice-rolling/gambling game. In this version, users wager virtual money and play as one of eight Mario characters, each with their own unique dice.
+Craps is a dice-rolling/gambling game. In this version, users wager virtual money and play
+as one of eight Mario characters, each with their own unique dice.
 
 # How to run this game
-Run the file "CrapsDriver.java". It should bring up this frame:
+Eventually I will clean up the run process, possibly package the app into a 
+binary/executable...
+
+For now, open a Git Bash or a shell terminal, and enter `./run.sh`. You must have a Java Runtime Environment installed (verify by running `java`). 
+
+After running, you should see this frame:
 ![smc-title-screen](https://user-images.githubusercontent.com/78334282/136995440-773e7c44-b7aa-48aa-9f78-e49cf9969e6a.png)
 
 
