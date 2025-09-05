@@ -199,3 +199,14 @@ gradle-app.setting
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,linux,osx,gradle,eclipse,java,git
 
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Project-specific ignores
+chosen.txt
+highScore.txt
