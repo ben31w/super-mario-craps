@@ -84,6 +84,8 @@ public class Dice extends JPanel {
         int value = (int)(Math.random()*6+1);
 
         // Set the image on the label to match the value.
+        // Since images are in a subdirectory of supermariocraps package, we can use
+        //  a relative path inside getResource.
         String filePath = "images" + File.separator + chosen + File.separator;
         switch (value) {            
             case 1: 

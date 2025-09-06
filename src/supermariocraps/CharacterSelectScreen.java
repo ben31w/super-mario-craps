@@ -58,6 +58,9 @@ public class CharacterSelectScreen extends JPanel {
         gbc.gridheight = 1;
         gbc.fill = GridBagConstraints.BOTH;
 
+        // Since images are in a subdirectory of supermariocraps package, we can use
+        //  a relative path inside getResource.
+
         // First row of buttons (gbc.gridy = 1)
         mario = new JButton();
         mario.setIcon(new ImageIcon(getClass().getResource("images/mario/mugshot.png")));

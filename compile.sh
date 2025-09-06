@@ -1,7 +1,7 @@
 # Compile .java files and place .class files in bin/
 javac src/supermariocraps/*.java -d bin/
 
-# Copy images to bin/ directory (it would be nice to do this automatically in javac...)
+# Copy images to bin/ directory
 mkdir bin/supermariocraps/images
 cp -r src/supermariocraps/images/* bin/supermariocraps/images/
 

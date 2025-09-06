@@ -25,7 +25,9 @@ public class TitleScreen extends JPanel {
         setLayout(new GridLayout(1,1));
 
         button = new JButton();
-        button.setIcon(new ImageIcon(getClass().getResource("/supermariocraps/images/titleScreen.png")));
+        // Since images are in a subdirectory of supermariocraps package, we can use
+        //  a relative path inside getResource.
+        button.setIcon(new ImageIcon(getClass().getResource("images/titleScreen.png")));
         button.addActionListener(new Listener());
 
         add(button);
