@@ -1,3 +1,4 @@
+package supermariocraps;
 import java.awt.GridLayout;
 
 import java.awt.event.ActionEvent;
@@ -24,7 +25,7 @@ public class TitleScreen extends JPanel {
         setLayout(new GridLayout(1,1));
 
         button = new JButton();
-        button.setIcon(new ImageIcon("images/titleScreen.png"));
+        button.setIcon(new ImageIcon(getClass().getResource("/supermariocraps/images/titleScreen.png")));
         button.addActionListener(new Listener());
 
         add(button);

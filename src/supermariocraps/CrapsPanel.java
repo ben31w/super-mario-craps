@@ -1,3 +1,4 @@
+package supermariocraps;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -252,7 +253,7 @@ public class CrapsPanel extends JPanel {
         add(dice1, gbc);
 
         mugshotLabel = new JLabel();
-        mugshotLabel.setIcon( new ImageIcon(IMAGES_FILE_PATH + chosen + File.separator + "neutral.png") );
+        mugshotLabel.setIcon(new ImageIcon(getClass().getResource(IMAGES_FILE_PATH + chosen + File.separator + "neutral.png")));
         gbc.gridx = 3;
         gbc.gridy = 3;
         gbc.gridheight = 2;
@@ -365,7 +366,7 @@ public class CrapsPanel extends JPanel {
             // Set labels.
             moneyLabel.setText( String.format(MONEY_FORMAT_STRING, money) );
             wagerLabel.setText( String.format(WAGER_FORMAT_STRING, wager) );
-            mugshotLabel.setIcon( new ImageIcon(IMAGES_FILE_PATH  + chosen + File.separator + "neutral.png") );
+            mugshotLabel.setIcon( new ImageIcon(getClass().getResource(IMAGES_FILE_PATH  + chosen + File.separator + "neutral.png")) );
         }
     }
     
@@ -410,7 +411,7 @@ public class CrapsPanel extends JPanel {
                     moneyLabel.setText( String.format(MONEY_FORMAT_STRING, money) );
                     wagerLabel.setText( String.format(WAGER_FORMAT_STRING, wager) );
                     textfield.setText("");
-                    mugshotLabel.setIcon( new ImageIcon(IMAGES_FILE_PATH + chosen + File.separator + "neutral.png"));
+                    mugshotLabel.setIcon( new ImageIcon(getClass().getResource(IMAGES_FILE_PATH + chosen + File.separator + "neutral.png")));
                 }
             }
             catch (NumberFormatException f) {
@@ -569,7 +570,7 @@ public class CrapsPanel extends JPanel {
     private void win() {
         goalLabel.setFont(new Font("calibri", Font.BOLD, 15));
         goalLabel.setText("You won $" + wager*2 + "!");
-        mugshotLabel.setIcon( new ImageIcon(IMAGES_FILE_PATH + chosen + File.separator + "happy.png") );
+        mugshotLabel.setIcon( new ImageIcon(getClass().getResource(IMAGES_FILE_PATH + chosen + File.separator + "happy.png")) );
 
         money += wager*2;
         wager = 0;
@@ -607,12 +608,12 @@ public class CrapsPanel extends JPanel {
         streakLabel.setText("Streak: " + streak);
 
         if(money > 0) {
-            mugshotLabel.setIcon( new ImageIcon(IMAGES_FILE_PATH + chosen + File.separator + "sad.png") );
+            mugshotLabel.setIcon( new ImageIcon(getClass().getResource(IMAGES_FILE_PATH + chosen + File.separator + "sad.png")) );
             resetButtons();
         }
         else {
             goalLabel.setText("GAME OVER");
-            mugshotLabel.setIcon( new ImageIcon(IMAGES_FILE_PATH + chosen + File.separator + "depressed.png") );
+            mugshotLabel.setIcon( new ImageIcon(getClass().getResource(IMAGES_FILE_PATH + chosen + File.separator + "depressed.png")) );
             disableButtons();
         }
     }

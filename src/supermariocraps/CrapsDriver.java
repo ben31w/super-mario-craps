@@ -1,3 +1,4 @@
+package supermariocraps;
 import javax.swing.JFrame;
 
 /**
