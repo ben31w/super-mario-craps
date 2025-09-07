@@ -6,7 +6,13 @@ as one of eight Mario characters, each with their own unique dice.
 Eventually I will clean up the run process, possibly package the app into a 
 binary/executable...
 
-For now, open a Git Bash or a shell terminal, and enter `./run.sh`. You must have a Java Runtime Environment installed (verify by running `java`). 
+For now, there are two ways to run the game:
+
+(Option 1) Download the JAR file attached to the latest release, and run `java -jar SuperMarioCraps.jar`.
+You must have a Java Runtime Environment installed (verify you can run `java`). 
+
+(Option 2) Clone the project, and run `run.sh`
+You must have a Java Development Kit installed (verify you can run `java` and `javac`). 
 
 After running, you should see this frame:
 ![smc-title-screen](https://user-images.githubusercontent.com/78334282/136995440-773e7c44-b7aa-48aa-9f78-e49cf9969e6a.png)
