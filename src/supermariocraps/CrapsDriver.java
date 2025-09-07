@@ -29,7 +29,7 @@ import javax.swing.JFrame;
  * Your ultimate objective is to earn as much money as possible. Good luck!
  * 
  * @author ben31w
- * @version 2021.01.05
+ * @version 2025.09.06
  */
 public class CrapsDriver {
     /** displays title screen */
@@ -44,6 +44,11 @@ public class CrapsDriver {
     
     /**
      * Given an int, switches to the corresponding JFrame (1, 2, or 3).
+     * <ol>
+     * <li>1 = title screen</li>
+     * <li>2 = character select screen</li>
+     * <li>3 = game screen</li>
+     * </ol>
      * 
      * @param num
      *           the frame number to switch to
@@ -91,7 +96,7 @@ public class CrapsDriver {
     private static void setFrame(JFrame jf) {
         jf.setSize(700, 450);
         jf.setLocationRelativeTo( null );
-        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
     
