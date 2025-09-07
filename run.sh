@@ -1,2 +1,2 @@
 ./compile.sh
-java -classpath bin/ CrapsDriver
+java -classpath bin/ supermariocraps.CrapsDriver

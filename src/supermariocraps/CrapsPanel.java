@@ -1,3 +1,4 @@
+package supermariocraps;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -21,7 +22,7 @@ import javax.swing.JTextField;
  * JPanel containing the craps "game field".
  *  
  * @author ben31w
- * @version 2021.10.12
+ * @version 2025.09.06
  */
 public class CrapsPanel extends JPanel {
     /** the pair of dice used during the initial roll */
@@ -112,9 +113,14 @@ public class CrapsPanel extends JPanel {
     private GridBagConstraints gbc = new GridBagConstraints();
     
     // CONSTANTS
-    private static final String IMAGES_FILE_PATH = "images" + File.separator;
     private static final String MONEY_FORMAT_STRING = "$%,d";
     private static final String WAGER_FORMAT_STRING = "Wager: $%,d";
+
+    // Images for different character moods.
+    private final ImageIcon neutral;
+    private final ImageIcon happy;
+    private final ImageIcon sad;
+    private final ImageIcon depressed;
 
     
     /**
@@ -125,6 +131,14 @@ public class CrapsPanel extends JPanel {
         // Get the player's character and the high score.
         chosen = getChosenCharacter("chosen.txt");
         highScore = getHighScore("highScore.txt");
+
+        // Get Images for different character moods.
+        // Since images are in a subdirectory of supermariocraps package, we can use
+        //  a relative path inside getResource.
+        neutral   = new ImageIcon(getClass().getResource(String.format("images/%s/neutral.png", chosen)));
+        happy     = new ImageIcon(getClass().getResource(String.format("images/%s/happy.png", chosen)));
+        sad       = new ImageIcon(getClass().getResource(String.format("images/%s/sad.png", chosen)));
+        depressed = new ImageIcon(getClass().getResource(String.format("images/%s/depressed.png", chosen)));
         
         // Set the panel layout.
         setLayout(new GridBagLayout());
@@ -252,7 +266,7 @@ public class CrapsPanel extends JPanel {
         add(dice1, gbc);
 
         mugshotLabel = new JLabel();
-        mugshotLabel.setIcon( new ImageIcon(IMAGES_FILE_PATH + chosen + File.separator + "neutral.png") );
+        mugshotLabel.setIcon(neutral);
         gbc.gridx = 3;
         gbc.gridy = 3;
         gbc.gridheight = 2;
@@ -365,7 +379,7 @@ public class CrapsPanel extends JPanel {
             // Set labels.
             moneyLabel.setText( String.format(MONEY_FORMAT_STRING, money) );
             wagerLabel.setText( String.format(WAGER_FORMAT_STRING, wager) );
-            mugshotLabel.setIcon( new ImageIcon(IMAGES_FILE_PATH  + chosen + File.separator + "neutral.png") );
+            mugshotLabel.setIcon(neutral);
         }
     }
     
@@ -410,7 +424,7 @@ public class CrapsPanel extends JPanel {
                     moneyLabel.setText( String.format(MONEY_FORMAT_STRING, money) );
                     wagerLabel.setText( String.format(WAGER_FORMAT_STRING, wager) );
                     textfield.setText("");
-                    mugshotLabel.setIcon( new ImageIcon(IMAGES_FILE_PATH + chosen + File.separator + "neutral.png"));
+                    mugshotLabel.setIcon(neutral);
                 }
             }
             catch (NumberFormatException f) {
@@ -569,7 +583,7 @@ public class CrapsPanel extends JPanel {
     private void win() {
         goalLabel.setFont(new Font("calibri", Font.BOLD, 15));
         goalLabel.setText("You won $" + wager*2 + "!");
-        mugshotLabel.setIcon( new ImageIcon(IMAGES_FILE_PATH + chosen + File.separator + "happy.png") );
+        mugshotLabel.setIcon(happy);
 
         money += wager*2;
         wager = 0;
@@ -607,12 +621,12 @@ public class CrapsPanel extends JPanel {
         streakLabel.setText("Streak: " + streak);
 
         if(money > 0) {
-            mugshotLabel.setIcon( new ImageIcon(IMAGES_FILE_PATH + chosen + File.separator + "sad.png") );
+            mugshotLabel.setIcon(sad);
             resetButtons();
         }
         else {
             goalLabel.setText("GAME OVER");
-            mugshotLabel.setIcon( new ImageIcon(IMAGES_FILE_PATH + chosen + File.separator + "depressed.png") );
+            mugshotLabel.setIcon(depressed);
             disableButtons();
         }
     }

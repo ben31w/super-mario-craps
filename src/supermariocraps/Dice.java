@@ -1,3 +1,4 @@
+package supermariocraps;
 import java.awt.GridLayout;
 
 import java.io.File;
@@ -41,13 +42,13 @@ public class Dice extends JPanel {
             chosen = fout.next();
             
             label1 = new JLabel();
-            label1.setIcon(new ImageIcon("images" + File.separator + chosen + 
-                    File.separator + "1.png"));
+            label1.setIcon(new ImageIcon(getClass().getResource("images" + File.separator + chosen + 
+                    File.separator + "1.png")));
             add(label1);
 
             label2 = new JLabel();
-            label2.setIcon(new ImageIcon("images" + File.separator + chosen + 
-                    File.separator + "1.png"));
+            label2.setIcon(new ImageIcon(getClass().getResource("images" + File.separator + chosen + 
+                    File.separator + "1.png")));
             add(label2);
             
             fout.close();
@@ -83,25 +84,27 @@ public class Dice extends JPanel {
         int value = (int)(Math.random()*6+1);
 
         // Set the image on the label to match the value.
+        // Since images are in a subdirectory of supermariocraps package, we can use
+        //  a relative path inside getResource.
         String filePath = "images" + File.separator + chosen + File.separator;
         switch (value) {            
             case 1: 
-                label.setIcon(new ImageIcon(filePath + "1.png"));
+                label.setIcon(new ImageIcon(getClass().getResource(filePath + "1.png")));
                 break;
             case 2: 
-                label.setIcon(new ImageIcon(filePath + "2.png"));
+                label.setIcon(new ImageIcon(getClass().getResource(filePath + "2.png")));
                 break;
             case 3: 
-                label.setIcon(new ImageIcon(filePath + "3.png"));
+                label.setIcon(new ImageIcon(getClass().getResource(filePath + "3.png")));
                 break;
             case 4: 
-                label.setIcon(new ImageIcon(filePath + "4.png"));
+                label.setIcon(new ImageIcon(getClass().getResource(filePath + "4.png")));
                 break;
             case 5: 
-                label.setIcon(new ImageIcon(filePath + "5.png"));
+                label.setIcon(new ImageIcon(getClass().getResource(filePath + "5.png")));
                 break;
             case 6:
-                label.setIcon(new ImageIcon(filePath+ "6.png"));
+                label.setIcon(new ImageIcon(getClass().getResource(filePath+ "6.png")));
         }
 
         return value;

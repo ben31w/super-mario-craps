@@ -1,4 +1,5 @@
-//Ben Wright   05/22/19
+package supermariocraps;
+
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -57,23 +58,26 @@ public class CharacterSelectScreen extends JPanel {
         gbc.gridheight = 1;
         gbc.fill = GridBagConstraints.BOTH;
 
+        // Since images are in a subdirectory of supermariocraps package, we can use
+        //  a relative path inside getResource.
+
         // First row of buttons (gbc.gridy = 1)
         mario = new JButton();
-        mario.setIcon(new ImageIcon("images/mario/mugshot.png"));
+        mario.setIcon(new ImageIcon(getClass().getResource("images/mario/mugshot.png")));
         setButton(mario);
         gbc.gridx = 0;
         gbc.gridy = 1;
         add(mario, gbc);
 
         luigi = new JButton();
-        luigi.setIcon(new ImageIcon("images/luigi/mugshot.png"));
+        luigi.setIcon(new ImageIcon(getClass().getResource("images/luigi/mugshot.png")));
         setButton(luigi);
         gbc.gridx = 1;
         gbc.gridy = 1;
         add(luigi, gbc);
 
         peach = new JButton();
-        peach.setIcon(new ImageIcon("images/peach/mugshot.png"));
+        peach.setIcon(new ImageIcon(getClass().getResource("images/peach/mugshot.png")));
         setButton(peach);
         gbc.gridx = 2;
         gbc.gridy = 1;
@@ -81,21 +85,21 @@ public class CharacterSelectScreen extends JPanel {
 
         // Second row of buttons (gbc.gridy = 2)
         yoshi = new JButton();
-        yoshi.setIcon(new ImageIcon("images/yoshi/mugshot.png"));
+        yoshi.setIcon(new ImageIcon(getClass().getResource("images/yoshi/mugshot.png")));
         setButton(yoshi);
         gbc.gridx = 0;
         gbc.gridy = 2;
         add(yoshi, gbc);
 
         wario = new JButton();
-        wario.setIcon(new ImageIcon("images/wario/mugshot.png"));
+        wario.setIcon(new ImageIcon(getClass().getResource("images/wario/mugshot.png")));
         setButton(wario);
         gbc.gridx = 1;
         gbc.gridy = 2;
         add(wario, gbc);
 
         dk = new JButton();
-        dk.setIcon(new ImageIcon("images/dk/mugshot.png"));
+        dk.setIcon(new ImageIcon(getClass().getResource("images/dk/mugshot.png")));
         setButton(dk);
         gbc.gridx = 2;
         gbc.gridy = 2;
