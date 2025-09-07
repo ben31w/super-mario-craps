@@ -1,2 +1,3 @@
+#!/bin/bash
 ./compile.sh
-java -classpath bin/ supermariocraps.CrapsDriver
+java -classpath out/ supermariocraps.CrapsDriver

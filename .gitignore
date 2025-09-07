@@ -214,4 +214,7 @@ gradle-app.setting
 # Project-specific ignores
 chosen.txt
 highScore.txt
-archive/*
+
+# Compiled output and images: this is used as the classpath in the run script
+#  and it's bundled into the jar for releases
+out/

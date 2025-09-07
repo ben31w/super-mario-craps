@@ -1,10 +1,12 @@
-# Compile .java files and place .class files in bin/
-javac src/supermariocraps/*.java -d bin/
+#!/bin/bash
 
-# Copy images to bin/ directory
-mkdir bin/supermariocraps/images
-cp -r src/supermariocraps/images/* bin/supermariocraps/images/
+# Compile .java files and place .class files in out/
+javac src/supermariocraps/*.java -d out/
+
+# Copy images to out/ directory
+mkdir out/supermariocraps/images
+cp -r src/supermariocraps/images/* out/supermariocraps/images/
 
 # Create executable SuperMarioCraps.jar file using CrapsDriver as entry point and 
-# including all files in bin/
-jar cfe SuperMarioCraps.jar supermariocraps.CrapsDriver -C bin .
+# including all files in out/
+jar cfe SuperMarioCraps.jar supermariocraps.CrapsDriver -C out .
